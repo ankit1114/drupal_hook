@@ -1,0 +1,37 @@
+/**
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function mytheme_form_alter(&$form, &$form_state, &$form_id)
+{
+    if ($form_id == 'FORM_ID'){
+
+//            to remove  description
+            unset($form['name']['#description']);
+
+//            to update title
+            $form['name']['#title'] = t("Your Custom name");
+
+//            to update placeholder
+            $form['name']['#attributes']['placeholder'] = 'Custom placeholder';
+
+//            to add class
+            $form['name']['#attributes']['class'][] = 'custom_class';
+
+//            to add class to submit button
+            $form['actions']['submit']['#attributes']['class'][] = 'submit_class';
+
+//            to change value of submit button
+            $form['actions']['submit']['#attributes']['value'][] = t('Submit Value');
+
+//            to add prefix
+            $form['actions']['submit']['#prefix'] = '<div class="class_div_prefix">';
+
+//            to add suffix
+            $form['actions']['submit']['#suffix'] = '</div>';
+
+//           to update All option with your text
+           $form['field_name']['#options']['All'] = t('Select option');
+    }
+}
